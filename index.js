@@ -1,5 +1,13 @@
-// Importando as cofigurações de pro server ler
-const customExpress = require('./config/customexpress')
+// Importando as cofigurações pro server ler
+const customExpress = require('./config/customexpress');
+const conexao = require('./infra/conexao');
+
+conexao.connect( (erro) => {
+  if (erro) {
+    console.log(erro);
+  }
+});
+
 const app = customExpress();
 
 // Subindo o server na porta 3000
