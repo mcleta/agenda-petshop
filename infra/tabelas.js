@@ -1,5 +1,4 @@
 const { query } = require("express");
-
 class Tabelas {
   init(conexao){
     this.conexao = conexao
@@ -9,7 +8,7 @@ class Tabelas {
 
   criarAtendimentos(){
     const sql = `
-      CREATE TABLE Atendimentos (
+      CREATE TABLE IF NOT EXISTS Atendimentos (
       id int NOT NULL AUTO_INCREMENT,
       cliente varchar(50) NOT NULL,
       pet varchar(20),
