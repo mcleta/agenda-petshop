@@ -23,7 +23,7 @@ module.exports = app => {
 
   // Rota Patch
   app.patch('/atendimentos/:id', (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = req.params.id;
     const valores = req.body;
     
     Atendimento.altera(id, valores, res);
