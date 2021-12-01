@@ -5,8 +5,13 @@ module.exports = app => {
 
   // Rota via Get
   app.get('/atendimentos', (req, res) => {
-    console.log(req.body);
-    res.send('Você esta na rota de atendimentos via GET');
+    Atendimento.lista(res);
+  })
+
+  app.get('/atendimentos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    
+    Atendimento.buscaPorId(id, res);
   })
 
   // Rota via Post
@@ -15,5 +20,13 @@ module.exports = app => {
 
     Atendimento.adiciona(atendimento, res);
   })
+
+  // Rota Patch
+  app.patch('/atendimentos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const valores = req.body;
+    
+    Atendimento.altera(id, valores, res);
+  });
 
 }
